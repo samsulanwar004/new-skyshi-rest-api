@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - 'main'
+  tags:
+      - 'v*.*.*'
 
 jobs:
   build:
@@ -24,4 +26,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/new-skyshi-rest-api:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/new-skyshi-rest-api:${{github.ref_name }}
